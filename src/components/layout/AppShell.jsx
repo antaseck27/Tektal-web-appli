@@ -17,7 +17,6 @@ export default function AppShell({ children, compact = false }) {
     <div className={`shell ${compact ? "shell-compact" : ""}`}>
       <aside className={`sidebar ${open ? "open" : ""}`}>
         <div className="brand">TEKTAL</div>
-
         <nav className="nav">
           {nav.map((item) => (
             <Link
@@ -30,9 +29,14 @@ export default function AppShell({ children, compact = false }) {
             </Link>
           ))}
         </nav>
-
-        <a className="download-btn" href={APP_DOWNLOAD_URL} target="_blank" rel="noreferrer">
-          Télécharger l’application
+        
+        <a
+          className="download-btn"
+          href={APP_DOWNLOAD_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Télécharger l'application
         </a>
       </aside>
 
@@ -43,7 +47,6 @@ export default function AppShell({ children, compact = false }) {
           </button>
           <div className="topbar-title">Tektal Web</div>
         </header>
-
         <section className="page">{children}</section>
       </main>
     </div>
