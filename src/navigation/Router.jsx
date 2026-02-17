@@ -11,6 +11,7 @@ export default function Router() {
   return (
     <Routes>
       <Route path="/" element={<Welcome />} />
+
       <Route
         path="/app"
         element={
@@ -43,14 +44,17 @@ export default function Router() {
           </AppShell>
         }
       />
-      <Route
-        path="/share/:id"
-        element={
-          <AppShell compact>
-            <SharePathScreen />
-          </AppShell>
-        }
-      />
+
+     <Route
+  path="/share/:share_token"
+  element={
+    <AppShell compact>
+      <SharePathScreen />
+    </AppShell>
+  }
+/>
+
+
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

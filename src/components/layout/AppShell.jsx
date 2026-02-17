@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { APP_DOWNLOAD_URL } from "../../config/api";
-// import "./AppShell.css";
 
 const nav = [
   { to: "/app", label: "Accueil" },
@@ -18,6 +17,7 @@ export default function AppShell({ children, compact = false }) {
     <div className={`shell ${compact ? "shell-compact" : ""}`}>
       <aside className={`sidebar ${open ? "open" : ""}`}>
         <div className="brand">TEKTAL</div>
+
         <nav className="nav">
           {nav.map((item) => (
             <Link
@@ -38,9 +38,12 @@ export default function AppShell({ children, compact = false }) {
 
       <main className="content">
         <header className="topbar">
-          <button className="menu-btn" onClick={() => setOpen((v) => !v)}>☰</button>
+          <button className="menu-btn" onClick={() => setOpen((v) => !v)}>
+            ☰
+          </button>
           <div className="topbar-title">Tektal Web</div>
         </header>
+
         <section className="page">{children}</section>
       </main>
     </div>
