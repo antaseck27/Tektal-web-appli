@@ -253,3 +253,6 @@ h1,h2,h3,p { margin: 0 0 10px; }
     grid-template-columns: 1fr;
   }
 }
+/* Carte Leaflet */
+.map-wrap { border-radius: 12px; overflow: hidden; }
+.leaflet-map { height: 300px; width: 100%; }
