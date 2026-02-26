@@ -1,8 +1,32 @@
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+// import { Navigate } from 'react-router-dom';
+// import { useAuth } from '../context/AuthContext';
+
+// export default function ProtectedRoute({ children }) {
+//   const { isAuthenticated, loading } = useAuth();
+
+//   if (loading) {
+//     return (
+//       <div className="loading-container">
+//         <div className="spinner"></div>
+//         <p>Chargement...</p>
+//       </div>
+//     );
+//   }
+
+//   if (!isAuthenticated) {
+//     return <Navigate to="/login" replace />;
+//   }
+
+//   return children;
+// }
+
+
+import { Navigate, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function ProtectedRoute({ children }) {
   const { isAuthenticated, loading } = useAuth();
+  const location = useLocation();
 
   if (loading) {
     return (
@@ -14,7 +38,7 @@ export default function ProtectedRoute({ children }) {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace state={{ from: location }} />;
   }
 
   return children;

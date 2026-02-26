@@ -74,6 +74,10 @@ import MesChemins from "../screens/TableauDeBord/MesChemins";
 import Favoris from "../screens/TableauDeBord/Favoris";
 import Profil from "../screens/TableauDeBord/Profil";
 import SharePathScreen from "../screens/TableauDeBord/SharePathScreen";
+import EditProfil from "../screens/TableauDeBord/EditProfil";
+import Parametres from "../screens/TableauDeBord/Parametres";
+import Aide from "../screens/TableauDeBord/Aide";
+
 
 export default function Router() {
   return (
@@ -136,6 +140,10 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+      <Route path="/profil/edit" element={<ProtectedRoute><AppShell><EditProfil /></AppShell></ProtectedRoute>} />
+<Route path="/parametres" element={<ProtectedRoute><AppShell><Parametres /></AppShell></ProtectedRoute>} />
+<Route path="/aide" element={<ProtectedRoute><AppShell><Aide /></AppShell></ProtectedRoute>} />
+
 
       {/* Redirection par défaut */}
       <Route path="*" element={<Navigate to="/" replace />} />
