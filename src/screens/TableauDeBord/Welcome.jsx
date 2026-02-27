@@ -43,6 +43,51 @@
 
 
 
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+export default function Welcome() {
+  const navigate = useNavigate();
+  const [value, setValue] = useState("");
+
+  const openShare = () => {
+    const raw = value.trim();
+    if (!raw) return;
+
+    let token = raw;
+    if (raw.startsWith("http")) {
+      const after = raw.split("/share/")[1] || "";
+      token = after.split("/")[0];
+    }
+    token = token.replaceAll("/", "");
+
+    if (token) navigate(`/share/${encodeURIComponent(token)}`);
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 grid place-items-center px-6">
+      <div className="w-full max-w-xl rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+        <h1 className="text-3xl font-extrabold text-slate-900">TEKTAL</h1>
+        <p className="mt-2 text-slate-600">Visualisez un chemin partagé.</p>
+
+        <div className="mt-6 flex gap-2">
+          <input
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            placeholder="Collez le lien ou le token"
+            className="flex-1 rounded-xl border border-slate-200 px-4 py-3 outline-none"
+          />
+          <button
+            onClick={openShare}
+            className="rounded-xl bg-amber-400 px-4 py-3 font-bold text-slate-900"
+          >
+            Ouvrir
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 
 
